@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  user-select: none;
+}
+
+.knob {
+  position: relative;
+  background: radial-gradient(circle at 30% 30%, #3a3d4a, #1a1d2a);
+  border: 2px solid #2a3f5f;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.knob::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.knob:hover {
+  border-color: var(--color-primary-light, #3b82f6);
+}
+
+.knob.dragging {
+  cursor: grabbing;
+  border-color: var(--color-accent, #22c55e);
+}
+
+.indicator {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 3px;
+  height: 35%;
+  background: linear-gradient(to bottom, var(--color-accent, #22c55e), #16a34a);
+  border-radius: 1.5px;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(0deg);
+  pointer-events: none;
+  box-shadow: 
+    0 0 8px var(--color-accent, #22c55e),
+    0 0 3px rgba(255, 255, 255, 0.5);
+  z-index: 2;
+}
+
+/* Size variants */
+.small .knob {
+  width: 32px;
+  height: 32px;
+}
+
+.medium .knob {
+  width: 48px;
+  height: 48px;
+}
+
+.large .knob {
+  width: 64px;
+  height: 64px;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: var(--color-text-dim, #94a3b8);
+  text-align: center;
+}
+
+.value {
+  font-size: 0.7rem;
+  color: var(--color-text, #cfd8ff);
+  font-family: monospace;
+  min-width: 3em;
+  text-align: center;
+}
+
+/* Keyboard focus */
+.knob:focus {
+  outline: none;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 2px var(--color-accent, #22c55e);
+}
+
+.knob:focus-visible {
+  outline: 2px solid var(--color-accent, #22c55e);
+  outline-offset: 2px;
+}

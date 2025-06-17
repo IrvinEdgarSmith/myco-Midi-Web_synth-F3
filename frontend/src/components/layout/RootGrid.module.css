@@ -1,0 +1,6 @@
+.root {
+  display: grid;
+  grid-template-columns: 27% 46% 27%;
+  height: 100vh;
+  overflow: hidden;
+}
