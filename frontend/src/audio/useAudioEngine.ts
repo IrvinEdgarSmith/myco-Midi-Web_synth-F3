@@ -9,8 +9,9 @@ export function useAudioEngine() {
     const ctx = new AudioContext({ sampleRate: 44100 });
     audioContextRef.current = ctx;
     
-    // Load worklet module (ensure path is correct in production)
-    ctx.audioWorklet.addModule('/src/audio/oscillator-processor.js').catch(console.error);
+    // Load worklet module bundled by Vite
+    const workletUrl = new URL('./oscillator-processor.ts', import.meta.url);
+    ctx.audioWorklet.addModule(workletUrl.href).catch(console.error);
   }, []);
 
   function createOscillator(opts: OscillatorOptions) {
