@@ -5,6 +5,7 @@ import ContainerPanel from '../../components/panels/ContainerPanel';
 import AudioVisualizer from '../../components/visualizers/AudioVisualizer';
 import Knob from '../../components/controls/Knob';
 import Slider from '../../components/controls/Slider';
+import TestToneButton from '../../components/TestToneButton';
 import styles from './CentralWorkspace.module.css';
 
 export default function CentralWorkspace() {
@@ -325,6 +326,7 @@ export default function CentralWorkspace() {
           </div>
         </div>
       </ContainerPanel>
+      <TestToneButton />
     </div>
   );
 }
