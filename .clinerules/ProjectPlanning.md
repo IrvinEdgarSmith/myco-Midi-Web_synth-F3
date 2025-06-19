@@ -20,13 +20,13 @@ The Myco Synth Web MIDI Project is a comprehensive web application that leverage
 - Responsive design for desktop and tablet use
 
 **Technology Stack:**
-- Frontend: HTML5, CSS3, JavaScript (ES6+)
+- Frontend: React 18.2.0 + TypeScript 5.4.2 ✅
+- Build Tool: Vite 5.2.0 ✅  
 - Audio: Web Audio API, Web MIDI API
-- UI Framework: To be determined (React/Vue/Vanilla)
-- State Management: To be determined
-- Build Tools: To be determined (Webpack/Vite)
-- Testing: To be determined
-- Deployment: To be determined
+- UI Framework: Custom components with CSS Modules ✅
+- State Management: React hooks (Context API/Zustand planned)
+- Testing: Vitest + React Testing Library (planned)
+- Deployment: Static hosting (Netlify/Vercel planned)
 
 **Architecture Constraints:**
 - Browser compatibility (modern browsers supporting Web Audio API)

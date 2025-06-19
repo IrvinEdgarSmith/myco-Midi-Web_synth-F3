@@ -3,11 +3,12 @@
 ## Technology Stack
 
 ### Core Technologies
-- **Frontend Framework**: TBD (React/Vue/Vanilla JS)
-- **Language**: JavaScript ES6+ / TypeScript (TBD)
+- **Frontend Framework**: React 18.2.0 ✅
+- **Language**: TypeScript 5.4.2 ✅
+- **Build Tool**: Vite 5.2.0 ✅
+- **Package Manager**: npm (default)
 - **Audio Processing**: Web Audio API, Web MIDI API
-- **Build Tool**: TBD (Webpack/Vite/Rollup)
-- **Package Manager**: TBD (npm/yarn/pnpm)
+- **State Management**: React hooks (useState) - considering Context API/Zustand
 
 ### Audio & MIDI APIs
 - **Web Audio API**: Primary audio processing engine
@@ -16,12 +17,13 @@
 - **AudioWorklet**: Custom audio processing (preferred)
 - **ScriptProcessorNode**: Fallback for older browsers
 
-### Development Tools (To Be Determined)
-- **Testing**: Jest/Vitest + Web Audio API mocks
-- **Linting**: ESLint + Prettier
-- **Type Checking**: TypeScript (if selected)
-- **Dev Server**: Development server with hot reload
-- **CI/CD**: GitHub Actions or similar
+### Development Tools (Current Setup)
+- **Build**: Vite with React TypeScript template
+- **Type Checking**: TypeScript strict mode enabled
+- **Testing**: TBD (Vitest + React Testing Library planned)
+- **Linting**: TBD (ESLint + Prettier planned)
+- **Dev Server**: Vite dev server with hot reload
+- **CI/CD**: TBD (GitHub Actions planned)
 
 ## Browser Support Matrix
 
@@ -61,22 +63,36 @@ AUDIO_SAMPLE_RATE=44100
 AUDIO_BUFFER_SIZE=128
 ```
 
-### Project Structure (Planned)
+### Project Structure (Current)
 ```
-myco-synth/
+frontend/
 ├── src/
-│   ├── audio/           # Audio engine and synthesis
-│   ├── midi/            # MIDI interface and routing
-│   ├── ui/              # User interface components
-│   ├── effects/         # Audio effects processing
-│   ├── sequencer/       # Pattern sequencer logic
-│   ├── presets/         # Preset management
-│   ├── recording/       # Audio recording functionality
-│   └── utils/           # Shared utilities
+│   ├── components/      # ✅ Reusable UI components
+│   │   ├── controls/    # ✅ Knob, Slider controls
+│   │   ├── layout/      # ✅ RootGrid layout system
+│   │   ├── panels/      # ✅ ContainerPanel component
+│   │   └── visualizers/ # ✅ AudioVisualizer component
+│   ├── pages/           # ✅ Main UI pages
+│   │   └── synth/       # ✅ SubtractiveSynth, AdditiveSynth, CentralWorkspace
+│   ├── theme/           # ✅ CSS tokens and theming
+│   ├── App.tsx          # ✅ Main application component
+│   └── main.tsx         # ✅ React entry point
 ├── public/              # Static assets
-├── tests/               # Test files
-├── docs/                # Documentation
-└── build/               # Build output
+├── index.html           # ✅ Main HTML template
+├── package.json         # ✅ React + TypeScript + Vite
+├── vite.config.ts       # ✅ Vite configuration
+└── tsconfig.json        # ✅ TypeScript configuration
+```
+
+### Environment Variables (Current)
+```bash
+# Development (configured)
+NODE_ENV=development
+VITE_DEV_PORT=5173
+
+# Audio settings (planned)
+AUDIO_SAMPLE_RATE=44100
+AUDIO_BUFFER_SIZE=256
 ```
 
 ## Performance Constraints
@@ -97,33 +113,54 @@ myco-synth/
 - **UI Rendering**: Minimize DOM updates during audio
 - **Event Handling**: Debounce/throttle user inputs
 
-## Dependencies (To Be Researched)
+## Dependencies (Current Setup)
 
-### Core Dependencies
-- Audio framework/library (research needed)
-- UI component library (research needed)
-- State management (research needed)
-- MIDI utilities (research needed)
+### Production Dependencies
+```json
+{
+  "react": "^18.2.0",           # ✅ Core React library
+  "react-dom": "^18.2.0"       # ✅ React DOM rendering
+}
+```
 
 ### Development Dependencies
-- Build tools and bundlers
-- Testing frameworks
-- Development server
-- Code quality tools
+```json
+{
+  "@types/react": "^18.2.14",           # ✅ React TypeScript types
+  "@types/react-dom": "^18.2.7",        # ✅ React DOM TypeScript types
+  "@vitejs/plugin-react": "^4.2.0",     # ✅ Vite React plugin
+  "typescript": "^5.4.2",               # ✅ TypeScript compiler
+  "vite": "^5.2.0"                      # ✅ Build tool and dev server
+}
+```
 
-## Build Configuration
+### Pending Dependencies (To Be Added)
+- Audio framework: TBD (Tone.js vs pure Web Audio API)
+- State management: TBD (Context API vs Zustand vs Redux Toolkit)
+- Testing: Vitest + React Testing Library
+- Linting: ESLint + Prettier
+- UI utilities: TBD (consider headless UI library)
 
-### Development Build
-- Hot module replacement
-- Source maps enabled
-- Unminified code
-- Development audio buffer sizes
+## Build Configuration (Current)
 
-### Production Build
-- Code minification and optimization
-- Tree shaking for smaller bundles
-- Production audio buffer sizes
-- Performance monitoring
+### Development Build ✅
+- Hot module replacement enabled
+- TypeScript compilation
+- CSS modules support
+- Development server on port 5173
+
+### Production Build ✅
+- Vite optimized bundling
+- TypeScript compilation
+- Tree shaking enabled
+- Asset optimization
+
+### Available Scripts
+```bash
+npm run dev      # Start development server
+npm run build    # Production build
+npm run preview  # Preview production build
+```
 
 ## Testing Strategy
 

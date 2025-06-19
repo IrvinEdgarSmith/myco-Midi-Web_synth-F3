@@ -47,7 +47,30 @@
 **Trade-offs**: Browser compatibility vs Feature completeness
 
 ### UI Framework Approach
-**Decision**: TBD - Framework evaluation pending
+**Decision**: React + TypeScript + Vite (ADOPTED)
+**Date**: June 19, 2025
+**Rationale**: React ecosystem provides mature component model, excellent TypeScript support, and Vite offers fast development experience
+**Implementation**: 27/46/27% responsive grid layout with modular component architecture
+**Components**: RootGrid, ContainerPanel, Knob, Slider, AudioVisualizer
+**Trade-offs**: Bundle size vs Development velocity (chosen DX over minimal size)
+
+### Component Architecture Pattern
+**Decision**: CSS Modules + Props-based State Management
+**Date**: June 19, 2025
+**Rationale**: Scoped styling prevents conflicts, props drilling sufficient for current complexity
+**Implementation**: Each component has dedicated .module.css file, state passed via props
+**Impact**: Clean separation of styles, TypeScript-safe component interfaces
+**Alternatives Considered**: Styled-components, global CSS, Context API
+**Trade-offs**: File organization vs Runtime performance
+
+### UI Control Standardization
+**Decision**: Custom Knob/Slider components with consistent interfaces
+**Date**: June 19, 2025
+**Rationale**: Synthesizer UX requires specialized audio controls with precise behavior
+**Implementation**: Unified props interface (label, value, min, max, onChange, unit)
+**Impact**: Consistent UX across all synthesis parameters, accessible by default
+**Alternatives Considered**: Third-party UI libraries, native HTML inputs
+**Trade-offs**: Development time vs UX control
 **Date**: Research Phase (upcoming)
 **Rationale**: Need to balance performance requirements with development velocity
 **Impact**: Affects bundle size, rendering performance, and development timeline
