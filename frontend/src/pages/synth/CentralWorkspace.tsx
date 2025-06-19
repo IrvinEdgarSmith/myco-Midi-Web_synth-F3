@@ -1,6 +1,7 @@
 // CentralWorkspace.tsx
 // Central workspace with visualizers, MIDI controls, and global settings
 import { useState } from 'react';
+import { useAudioEngine } from '../../audio/useAudioEngine';
 import ContainerPanel from '../../components/panels/ContainerPanel';
 import AudioVisualizer from '../../components/visualizers/AudioVisualizer';
 import Knob from '../../components/controls/Knob';
@@ -11,6 +12,27 @@ export default function CentralWorkspace() {
   // Global controls
   const [masterVolume, setMasterVolume] = useState(75);
   const [pan, setPan] = useState(0);
+
+  // Audio engine for test tone
+  const { createOscillator, stopOscillator, resume } = useAudioEngine();
+  const [testTone, setTestTone] = useState(false);
+
+  const toggleTestTone = () => {
+    if (testTone) {
+      stopOscillator('test');
+      setTestTone(false);
+    } else {
+      resume();
+      createOscillator({
+        id: 'test',
+        waveform: 'sine',
+        frequency: 440,
+        detuneCents: 0,
+        gain: 0.5,
+      });
+      setTestTone(true);
+    }
+  };
   
   // MIDI state
   const [pitchWheel, setPitchWheel] = useState(0);
@@ -266,6 +288,9 @@ export default function CentralWorkspace() {
             max={100}
             unit=""
           />
+          <button className={styles.button} onClick={toggleTestTone}>
+            {testTone ? 'Stop Test Tone' : 'Play Test Tone'}
+          </button>
           <button className={styles.button}>Browse Presets</button>
         </div>
       </ContainerPanel>
