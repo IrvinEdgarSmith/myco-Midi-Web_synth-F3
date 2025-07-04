@@ -39,6 +39,39 @@
   --transition-slow: 300ms ease-out;
 }
 
+/* Light theme variant */
+:root[data-theme="light"] {
+  /* Light theme palette */
+  --color-background: #ffffff;
+  --color-foreground: #1e293b;
+  
+  /* Primary colors - adjusted for light background */
+  --color-primary: #0891b2;      /* keep deep cyan */
+  --color-primary-light: #0ea5e9;
+  --color-secondary: #7c3aed;    /* keep deep purple */
+  --color-secondary-light: #8b5cf6;
+  --color-tertiary: #0891b2;     /* keep deep cyan */
+  --color-tertiary-light: #0ea5e9;
+  --color-quaternary: #c026d3;   /* keep deep magenta */
+  --color-quaternary-light: #d946ef;
+  --color-accent: #16a34a;       /* deeper green for light bg */
+  --color-accent-light: #22c55e;
+  
+  /* Surface colors */
+  --color-surface: #f8fafc;
+  --color-surface-light: #e2e8f0;
+  --color-surface-border: #cbd5e1;
+  
+  /* Text colors */
+  --color-text: #1e293b;
+  --color-text-dim: #64748b;
+  --color-text-bright: #0f172a;
+  
+  /* Adjust shadows for light theme */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -49,6 +82,7 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 * {

@@ -5,6 +5,7 @@ import ContainerPanel from '../../components/panels/ContainerPanel';
 import AudioVisualizer from '../../components/visualizers/AudioVisualizer';
 import Knob from '../../components/controls/Knob';
 import Slider from '../../components/controls/Slider';
+import ThemeToggle from '../../components/controls/ThemeToggle';
 import styles from './CentralWorkspace.module.css';
 
 export default function CentralWorkspace() {
@@ -266,6 +267,7 @@ export default function CentralWorkspace() {
             max={100}
             unit=""
           />
+          <ThemeToggle />
           <button className={styles.button}>Browse Presets</button>
         </div>
       </ContainerPanel>
