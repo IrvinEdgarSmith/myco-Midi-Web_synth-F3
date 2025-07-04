@@ -6,15 +6,17 @@ import AdditiveSynth from './pages/synth/AdditiveSynth';
 
 export default function App() {
   return (
-    <RootGrid>
-      {/* Left Sidebar (Subtractive Synth) */}
-      <SubtractiveSynth />
+    <>
+      <RootGrid>
+        {/* Left Sidebar (Subtractive Synth) */}
+        <SubtractiveSynth />
 
-      {/* Centre Workspace */}
-      <CentralWorkspace />
+        {/* Centre Workspace */}
+        <CentralWorkspace />
 
-      {/* Right Sidebar (Additive Synth) */}
-      <AdditiveSynth />
-    </RootGrid>
+        {/* Right Sidebar (Additive Synth) */}
+        <AdditiveSynth />
+      </RootGrid>
+    </>
   );
 }
